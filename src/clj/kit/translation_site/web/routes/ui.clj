@@ -18,27 +18,33 @@
     [:script {:src "https://unpkg.com/htmx.org/dist/ext/ws.js" :defer true}]
     [:script {:src "https://unpkg.com/hyperscript.org@0.9.12" :defer true}]]
    [:body
-    [:header {:class "text-base lg:text-sm"}
-     [:div {:class "bg-white items-center gap-x-14 px-4 max-w-screen-xl mx-auto lg:flex lg:px-8 lg:static"}
-      [:div {:class "flex items-center justify-between py-3 lg:py-5 lg:block"}
+    [:nav {:class "bg-white md:text-sm border-b"}
+     [:div {:class "gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8"}
+      [:div {:class "flex items-center justify-between py-5 md:block"}
        [:a {:href "javascript:void(0)"}
         [:img {:src "https://www.floatui.com/logo.svg"
                :width 120
                :height 50
                :alt "Float UI logo"}]]]
-      ]
-     [:nav.border-b
-      [:ul {:class "flex items-center gap-x-3 max-w-screen-xl mx-auto px-4 overflow-x-auto lg:px-8"}
-       (map-indexed
-        (fn [idx itm]
-          [:li {:key idx
-                :class (str "py-1" (if (zero? idx)
-                                     "border-b-2 border-indigo-600"
-                                     ""))}
-           [:a {:href "javascript:void(0)"
-                :class "block py-2 px-3 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100 duration-150"}
-            itm]])
-        ["Overview" "Integration" "Billing" "Plans"])]]]
+      [:div {:class "flex-1 items-center mt-8 md:mt-0 md:flex"}
+       [:ul {:class "justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0"}
+        (map-indexed
+         (fn [idx itm]
+           [:li {:key idx
+                 :class (str "py-1" (if (zero? idx)
+                                      "border-b-2 border-indigo-600"
+                                      ""))}
+            [:a {:href "javascript:void(0)"
+                 :class "block py-2 px-3 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-100 duration-150"}
+             itm]])
+         ["Overview" "Integration" "Billing" "Plans"])]]
+      [:div {:class "flex-1 gap-x-6 items-center justify-end mt-6 space-y-6 md:flex md:space-y-0 md:mt-0"}
+       [:a {:href "javascript:void(0)"
+            :class "block text-gray-700 hover:text-gray-900"}
+        "Log in"]
+       [:a {:href "javascript:void(0)"
+            :class "flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"}
+        "Sign in"]]]]
     [:h1 {:class "text-3xl font-bold underline"}
      "Welcome to Htmx + Kit module"]
     [:button {:hx-post "/clicked" :hx-swap "outerHTML"} "Click me!"]]))
