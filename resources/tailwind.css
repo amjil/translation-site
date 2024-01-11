@@ -7,17 +7,17 @@
     @apply mb-3;
   }
 
-  ul {
+  /* ul {
     @apply list-disc;
-  }
+  } */
 
   ol {
     @apply list-decimal;
   }
 
-  ul, ol {
+  /* ul, ol {
     @apply my-3 pl-10;
-  }
+  } */
 }
 
 @layer components {
