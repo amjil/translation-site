@@ -8,8 +8,7 @@
    [reitit.ring.middleware.muuntaja :as muuntaja]
    [reitit.ring.middleware.parameters :as parameters]))
 
-;; (def languages ["Mongolian" "English" "Chinese" "Russian" "Japanese"])
-(def languages ["Spanian" "English" "Chinese" "Russian" "Japanese"])
+(def languages ["Mongolian" "English" "Chinese" "Russian" "Japanese"])
 
 (defn lang-selector-button [idx]
   [:div {:class "relative py-4"}
@@ -22,8 +21,10 @@
                 "source_open = ! source_open; target_open = false"
                 "target_open = ! target_open; source_open = false"))}
     [:span {:class "flex items-center"}
-     [:span {:class "ml-3 block truncate"}
-      "English"]]
+     [:span {:class "ml-3 block truncate"
+             :x-text (if (zero? idx)
+                       "source_value"
+                       "target_value")}]]
     [:span {:class "pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2"}
      [:svg {:class "h-5 w-5 text-gray-400"
             :viewBox "0 0 20 20"
@@ -37,22 +38,31 @@
                     "target_open")}
     [:ul {:class "absolute z-10 mt-1 max-h-56 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm "
           :tabindex "-1" :role "listbox" :aria-labelledby "listbox-label" :aria-activedescendant "listbox-option-0"}
-     (map-indexed
-      (fn [idx itm]
+     (map
+      (fn [itm]
         [:li {:class "text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9"
-              :role "option"}
+              :role "option"
+              "x-on:click" (if (zero? idx)
+                             (str
+                              "source_value = '" itm "';
+                              source_open = false")
+                             (str
+                              "target_value = '" itm "';
+                               source_open = false"))}
          [:div {:class "flex items-center"}
           [:span {:class "font-normal ml-3 block truncate"}
            itm]]
-         (when (zero? idx)
-           [:span {:class "text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4"}
-            [:svg {:class "h-5 w-5"
-                   :viewBox "0 0 20 20"
-                   :fill "currentColor"
-                   :aria-hidden "true"}
-             [:path {:fill-rule "evenodd"
-                     :d "M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                     :clip-rule "evenodd"}]]])])
+         [:div {:x-show (if (zero? idx)
+                          (str "source_value == '" itm "'")
+                          (str "target_value == '" itm "'"))}
+         [:span {:class "text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4"}
+          [:svg {:class "h-5 w-5"
+                 :viewBox "0 0 20 20"
+                 :fill "currentColor"
+                 :aria-hidden "true"}
+           [:path {:fill-rule "evenodd"
+                   :d "M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                   :clip-rule "evenodd"}]]]]])
       languages)]]])
 
 (defn home [request]
@@ -96,7 +106,8 @@
             :class "flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"}
         "Sign in"]]]]
     [:div {:class "h-10"}]
-    [:div {:class "flex flex-col max-w-4xl mx-auto rounded-[18px] border"}
+    [:div {:class "flex flex-col max-w-4xl mx-auto rounded-[18px] border"
+           :x-data "{ source_value: 'English', target_value: 'Mongolian'}"}
      [:div {:class "border-b px-4"}
       [:div {:class "w-full max-w-fit flex"
              :x-data "{ source_open: false, target_open: false }"}
@@ -111,7 +122,7 @@
       [:div {:class "border-r w-1/2"}
        [:textarea {:placeholder "Type here"
                    :autocomplete "off"
-                   :class "resize-none border-none outline-none focus:outline-none outline-none border-transparent focus:border-transparent focus:ring-0"}]]
+                   :class "resize-none border-none focus:outline-none outline-none border-transparent focus:border-transparent focus:ring-0"}]]
       [:div {:class "w-1/2"}
        [:div {:class "resize-none border-none outline-none focus:outline-none outline-none border-transparent focus:border-transparent focus:ring-0"}]]]]]))
 
