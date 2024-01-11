@@ -44,11 +44,11 @@
               :role "option"
               "x-on:click" (if (zero? idx)
                              (str
-                              "source_value = '" itm "';
-                              source_open = false")
+                              "if (target_value == '" itm "') target_value = source_value;"
+                              "source_value = '" itm "';source_open = false")
                              (str
-                              "target_value = '" itm "';
-                               source_open = false"))}
+                              "if (source_value == '" itm "') source_value = target_value;"
+                              "target_value = '" itm "';target_open = false"))}
          [:div {:class "flex items-center"}
           [:span {:class "font-normal ml-3 block truncate"}
            itm]]
