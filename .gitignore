@@ -9,6 +9,7 @@ log/
 node_modules/
 modules/
 *.db
+resources/public/css/main.css
 
 # IntelliJ
 *.iml
