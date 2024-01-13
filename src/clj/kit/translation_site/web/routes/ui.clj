@@ -4,6 +4,7 @@
    [kit.translation-site.web.middleware.formats :as formats]
    [kit.translation-site.web.routes.utils :as utils]
    [kit.translation-site.web.htmx :refer [ui page] :as htmx]
+   [kit.translation-site.web.routes.pages.auth :as auth]
    [integrant.core :as ig]
    [reitit.ring.middleware.muuntaja :as muuntaja]
    [reitit.ring.middleware.parameters :as parameters]))
@@ -176,6 +177,7 @@
 ;; Routes
 (defn ui-routes [_opts]
   [["/" {:get home}]
+   ["/login" {:get auth/login}]
    ["/clicked" {:post clicked}]])
 
 (def route-data
