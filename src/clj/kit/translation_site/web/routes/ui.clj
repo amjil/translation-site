@@ -178,6 +178,7 @@
 (defn ui-routes [_opts]
   [["/" {:get home}]
    ["/login" {:get auth/login}]
+   ["/signup" {:get auth/signup}]
    ["/clicked" {:post clicked}]])
 
 (def route-data
