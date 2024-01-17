@@ -5,6 +5,7 @@
    [kit.translation-site.web.routes.utils :as utils]
    [kit.translation-site.web.htmx :refer [ui page] :as htmx]
    [kit.translation-site.web.routes.pages.auth :as auth]
+   [kit.translation-site.web.routes.pages.admin :as admin]
    [integrant.core :as ig]
    [reitit.ring.middleware.muuntaja :as muuntaja]
    [reitit.ring.middleware.parameters :as parameters]))
@@ -179,6 +180,7 @@
   [["/" {:get home}]
    ["/login" {:get auth/login}]
    ["/signup" {:get auth/signup}]
+   ["/admin" {:get admin/main}]
    ["/clicked" {:post clicked}]])
 
 (def route-data
