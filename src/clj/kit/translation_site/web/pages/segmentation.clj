@@ -23,17 +23,20 @@
                :alt "Float UI logo"}]]]]]
     [:div {:class "max-w-4xl mx-auto flex flex-col px-6 lg:px-8"}
      [:h3 {:class "py-4 text-2xl font-bold leading-9 tracking-tight text-gray-900"}
-      "Text Segmentation"]
+      [:span {:class "border rounded-[18px] p-2"}
+       "Text Segmentation"]]
      [:div {:class "flex flex-col rounded-[18px] border"}
-      [:div {:class "flex h-52 w-full px-4 border-b overflow-auto"}
+      [:div {:class "flex h-48 w-full px-4 border-b overflow-auto"}
        [:textarea {:placeholder "Type here"
                    :autocomplete "off"
                    :class "w-full h-full resize-none border-none focus:outline-none outline-none border-transparent focus:border-transparent focus:ring-0"}]]
-      [:div {:class "flex h-52 w-full px-4 overflow-auto"}]]
+      [:div {:class "flex h-48 w-full px-4 overflow-auto"}]]
+     [:div {:class "w-full px-4"}
+      ;; "请输入正确的文本。本工具按照以下符号将文本切换成句子，有。！？；等"
+      [:span "Please enter correct text. This tool switches text into sentences according to the following symbols, with. ! ? ; etc."]]
+     [:div {:class "flex flex-col rounded-[18px] border p-4"}
+      [:span "Divided into 50 sentences in total"]]
      [:div {:class "flex justify-end py-4"}
       [:a {:href "javascript:void(0)"
            :class "gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"}
-       "Segment"]]
-     [:div {:class "w-full px-4"}
-      ;; "请输入正确的文本。本工具按照以下符号将文本切换成句子，有。！？；等"
-      [:span "Please enter correct text. This tool switches text into sentences according to the following symbols, with. ! ? ; etc."]]]]))
+       "Segment"]]]]))
