@@ -6,6 +6,7 @@
    [kit.translation-site.web.htmx :refer [ui page] :as htmx]
    [kit.translation-site.web.pages.auth :as auth]
    [kit.translation-site.web.pages.admin :as admin]
+   [kit.translation-site.web.pages.segmentation :as segment]
    [integrant.core :as ig]
    [reitit.ring.middleware.muuntaja :as muuntaja]
    [reitit.ring.middleware.parameters :as parameters]))
@@ -181,7 +182,8 @@
    ["/login" {:get auth/login}]
    ["/signup" {:get auth/signup}]
    ["/admin" {:get admin/main}]
-   ["/clicked" {:post clicked}]])
+   ["/clicked" {:post clicked}]
+   ["/segment" {:get segment/main}]])
 
 (def route-data
   {:muuntaja   formats/instance
