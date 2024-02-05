@@ -4,8 +4,8 @@
    [kit.translation-site.web.middleware.formats :as formats]
    [kit.translation-site.web.routes.utils :as utils]
    [kit.translation-site.web.htmx :refer [ui page] :as htmx]
-   [kit.translation-site.web.routes.pages.auth :as auth]
-   [kit.translation-site.web.routes.pages.admin :as admin]
+   [kit.translation-site.web.pages.auth :as auth]
+   [kit.translation-site.web.pages.admin :as admin]
    [integrant.core :as ig]
    [reitit.ring.middleware.muuntaja :as muuntaja]
    [reitit.ring.middleware.parameters :as parameters]))

@@ -1,4 +1,4 @@
-(ns kit.translation-site.web.routes.pages.auth
+(ns kit.translation-site.web.pages.auth
   (:require
    [kit.translation-site.web.htmx :refer [ui page] :as htmx]))
 
