@@ -6,6 +6,7 @@
            com.github.seancorfield/honeysql {:mvn/version "2.4.1045"}
 
            cheshire/cheshire {:mvn/version "5.12.0"}
+           clj-http/clj-http {:mvn/version "3.12.3"}
 
            ;; Buddy
            buddy/buddy-core {:mvn/version "1.11.423"}

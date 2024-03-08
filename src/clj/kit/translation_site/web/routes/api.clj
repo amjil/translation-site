@@ -1,14 +1,15 @@
 (ns kit.translation-site.web.routes.api
   (:require
-    [kit.translation-site.web.controllers.health :as health]
-    [kit.translation-site.web.middleware.exception :as exception]
-    [kit.translation-site.web.middleware.formats :as formats]
-    [integrant.core :as ig]
-    [reitit.coercion.malli :as malli]
-    [reitit.ring.coercion :as coercion]
-    [reitit.ring.middleware.muuntaja :as muuntaja]
-    [reitit.ring.middleware.parameters :as parameters]
-    [reitit.swagger :as swagger]))
+   [kit.translation-site.web.controllers.health :as health]
+   [kit.translation-site.web.controllers.segmentation :as segmentation]
+   [kit.translation-site.web.middleware.exception :as exception]
+   [kit.translation-site.web.middleware.formats :as formats]
+   [integrant.core :as ig]
+   [reitit.coercion.malli :as malli]
+   [reitit.ring.coercion :as coercion]
+   [reitit.ring.middleware.muuntaja :as muuntaja]
+   [reitit.ring.middleware.parameters :as parameters]
+   [reitit.swagger :as swagger]))
 
 (def route-data
   {:coercion   malli/coercion
@@ -38,7 +39,9 @@
            :swagger {:info {:title "kit.translation-site API"}}
            :handler (swagger/create-swagger-handler)}}]
    ["/health"
-    {:get health/healthcheck!}]])
+    {:get health/healthcheck!}]
+   ["/segmentation"
+    {:post segmentation/request}]])
 
 (derive :reitit.routes/api :reitit/routes)
 
