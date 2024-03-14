@@ -8,16 +8,17 @@
     [:meta {:charset "UTF-8"}]
     [:title "Abiya AI + Segmentation"]
     [:link {:href "/css/main.css" :rel "stylesheet"}]
+    [:link {:href "/img/abiya_logo_icon.png" :rel "icon" :type "image/x-icon"}]
     [:script {:src "https://unpkg.com/htmx.org@1.9.10" :defer true}]
     [:script {:src "https://unpkg.com/htmx.org/dist/ext/ws.js" :defer true}]
     [:script {:src "https://unpkg.com/hyperscript.org@0.9.12" :defer true}]
     [:script {:src "https://unpkg.com/alpinejs" :defer false}]]
    [:body {:class "h-screen w-screen"}
     [:nav {:class "bg-grey md:text-sm border-b"}
-     [:div {:class "gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8"}
+     [:div {:class "gap-x-14 items-center mx-auto px-6 lg:px-8"}
       [:div {:class "flex items-center justify-between py-1 md:block"}
        [:a {:href "javascript:void(0)"}
-        [:img {:src "/img/logo.jpeg"
+        [:img {:src "/img/abiya_logo_picture.png"
                :width 120
                :height 50
                :alt "Float UI logo"}]]]]]
